@@ -1,0 +1,25 @@
+target/
+.git/
+
+# Local secrets and environment overrides
+.env
+.env.*
+!.env.example
+
+# Local runtime configuration (examples/container config remain included)
+config/server.toml
+config/services.d/service.example.toml
+
+# Local caches and generated artifacts
+.ruff_cache/
+**/.ruff_cache/
+.cache/
+tmp/
+build/
+dist/
+*.log
+THIRD_PARTY_LICENSES.html
+sbom-*.cdx.json
+
+# UCI schema files are fetched in the builder stage
+spec/

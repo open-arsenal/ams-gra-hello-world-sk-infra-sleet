@@ -1,0 +1,19 @@
+service_id = "ir-search-and-track-skill"
+service_uuid = "a1b2c3d4-e5f6-4a5b-8c9d-0123456789ab"
+allowed_topics = [
+  "mission.position-report",
+  "mission.observation-measurement-report",
+  "mission.service-status"
+]
+
+[[topic_bindings]]
+topic = "mission.position-report"
+allowed_messages = ["PositionReport"]
+
+[[topic_bindings]]
+topic = "mission.observation-measurement-report"
+allowed_messages = ["ObservationMeasurementReport"]
+
+[[topic_bindings]]
+topic = "mission.service-status"
+allowed_messages = ["ServiceStatus"]

@@ -1,0 +1,60 @@
+service_id = "graupel"
+service_uuid = "e03bdc89-a08b-411b-86c4-2e5468e9d0d2"
+allowed_topics = [
+  "mission.esm-activity",
+  "mission.navigation-report",
+  "mission.observation-measurement-report",
+  "mission.operator-notification",
+  "mission.po-activity",
+  "mission.position-report",
+  "mission.position-report-detailed",
+  "mission.signal-report",
+  "mission.subsystem-status",
+  "mission.system-status",
+  "mission.service-status"
+]
+
+[[topic_bindings]]
+topic = "mission.esm-activity"
+allowed_messages = ["ESM_Activity"]
+
+[[topic_bindings]]
+topic = "mission.navigation-report"
+allowed_messages = ["NavigationReport"]
+
+[[topic_bindings]]
+topic = "mission.observation-measurement-report"
+allowed_messages = ["ObservationMeasurementReport"]
+
+[[topic_bindings]]
+topic = "mission.operator-notification"
+allowed_messages = ["OperatorNotification"]
+
+[[topic_bindings]]
+topic = "mission.po-activity"
+allowed_messages = ["PO_Activity"]
+
+[[topic_bindings]]
+topic = "mission.position-report"
+allowed_messages = ["PositionReport"]
+
+[[topic_bindings]]
+topic = "mission.position-report-detailed"
+allowed_messages = ["PositionReportDetailed"]
+
+[[topic_bindings]]
+topic = "mission.signal-report"
+allowed_messages = ["SignalReport"]
+
+[[topic_bindings]]
+topic = "mission.subsystem-status"
+allowed_messages = ["SubsystemStatus"]
+
+[[topic_bindings]]
+topic = "mission.system-status"
+allowed_messages = ["SystemStatus"]
+
+[[topic_bindings]]
+topic = "mission.service-status"
+allowed_messages = ["ServiceStatus"]
+

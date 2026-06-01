@@ -1,0 +1,29 @@
+[package]
+name = "sleet-client"
+version = "0.1.0"
+edition = "2024"
+description = "Server-agnostic LA-CAL OWP client library"
+license = "Apache-2.0"
+repository = "https://gitlab.com/open-arsenal/ams-gra/hello-world-sk/infra/sleet"
+keywords = ["oms", "uci", "cal", "owp"]
+categories = ["network-programming"]
+readme = "../README.md"
+
+[dependencies]
+futures-util = "0.3"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+sleet-types = { path = "../sleet-types" }
+tokio = { version = "1", features = ["net"] }
+tokio-tungstenite = "0.29"
+
+[dev-dependencies]
+tokio = { version = "1", features = [
+  "macros",
+  "rt-multi-thread",
+  "net",
+  "time",
+] }
+
+[lints]
+workspace = true

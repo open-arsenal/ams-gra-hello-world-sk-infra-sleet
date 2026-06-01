@@ -1,0 +1,65 @@
+{
+  "PositionReportDetailed": {
+    "SecurityInformation": {
+      "Classification": "U",
+      "OwnerProducer": [
+        {
+          "GovernmentIdentifier": "USA"
+        }
+      ]
+    },
+    "MessageHeader": {
+      "SystemID": {
+        "UUID": "550e8400-e29b-41d4-a716-446655440000"
+      },
+      "Timestamp": "2026-01-01T00:00:00Z",
+      "SchemaVersion": "002.5.0",
+      "Mode": "LIVE"
+    },
+    "MessageData": {
+      "PositionReportData": [
+        {
+          "PositionSource": {
+            "ServiceID": {
+              "UUID": "550e8400-e29b-41d4-a716-446655440000"
+            }
+          },
+          "NavigationSolutionState": "ALIGNING",
+          "Kinematics": {
+            "Position": {
+              "RelativePoint": {
+                "ReferenceFrameID": {
+                  "UUID": "550e8400-e29b-41d4-a716-446655440000"
+                },
+                "Timestamp": "2026-01-01T00:00:00Z"
+              }
+            },
+            "Velocity": {
+              "NorthSpeed": 1.0,
+              "EastSpeed": 1.0,
+              "DownSpeed": 1.0
+            }
+          },
+          "KinematicsError": {
+            "PositionPositionCovariance": {
+              "PnPn": 1.0,
+              "PnPe": 1.0,
+              "PePe": 1.0
+            },
+            "PositionVelocityCovariance": {
+              "PnVn": 1.0,
+              "PnVe": 1.0,
+              "PeVn": 1.0,
+              "PeVe": 1.0
+            },
+            "VelocityVelocityCovariance": {
+              "VnVn": 1.0,
+              "VnVe": 1.0,
+              "VeVe": 1.0
+            }
+          }
+        }
+      ]
+    }
+  }
+}

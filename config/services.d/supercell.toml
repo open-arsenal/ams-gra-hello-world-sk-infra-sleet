@@ -1,0 +1,20 @@
+service_id = "supercell"
+service_uuid = "9680a6bc-b7c7-49ce-ace9-a90a6b893499"
+allowed_topics = [
+  "mission.navigation-report",
+  "mission.position-report",
+  "mission.system-status"
+]
+
+[[topic_bindings]]
+topic = "mission.navigation-report"
+allowed_messages = ["NavigationReport"]
+
+[[topic_bindings]]
+topic = "mission.position-report"
+allowed_messages = ["PositionReport"]
+
+[[topic_bindings]]
+topic = "mission.system-status"
+allowed_messages = ["SystemStatus"]
+

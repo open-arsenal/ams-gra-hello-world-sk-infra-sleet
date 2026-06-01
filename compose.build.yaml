@@ -1,0 +1,17 @@
+# Sleet — Local source-build compose overlay
+#
+# Usage:
+#   make compose-build-up
+# Equivalent:
+#   podman-compose -f compose.yaml -f compose.build.yaml up --build
+#
+# This overlay builds the runtime image from the local source tree. The base
+# compose.yaml file remains image-only for deployments that use published images.
+
+services:
+  sleet:
+    build:
+      context: .
+      dockerfile: Containerfile
+      target: runtime
+    image: registry.gitlab.com/open-arsenal/ams-gra/hello-world-sk/infra/sleet:latest

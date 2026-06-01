@@ -1,0 +1,8 @@
+global:
+  scrape_interval: 5s
+
+scrape_configs:
+  - job_name: 'sleet'
+    static_configs:
+      # Sleet's admin/metrics listener inside the docker network
+      - targets: ['sleet:21312']

@@ -1,0 +1,12 @@
+service_id = "tracker_service"
+service_uuid = "123e4567-e89b-12d3-a456-426614174001"
+allowed_topics = ["mission", "tracks", "alerts"]
+
+# Optional: restrict which OMS message types may be published or subscribed on each topic.
+# When a topic has a binding, PUB or SUB operations with a schema-valid message
+# name not in the allowed_messages list are rejected with -ERR Illegal-State.
+# Topics without a binding accept any schema-valid message (permissive default).
+#
+# [[topic_bindings]]
+# topic = "tracks"
+# allowed_messages = ["SystemTrack", "Track"]

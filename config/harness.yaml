@@ -1,0 +1,31 @@
+url: ws://127.0.0.1:21402
+owp_versions:
+  - "1.0"
+schema_version: "002.5.0"
+services:
+  - service_id: harness-tester
+topics:
+  - name: mission.position-report
+    message_type: PositionReport
+  - name: mission.system-status
+    message_type: SystemStatus
+  - name: mission.service-status
+    message_type: ServiceStatus
+  - name: mission.subsystem-status
+    message_type: SubsystemStatus
+  - name: mission.operator-notification
+    message_type: OperatorNotification
+  - name: mission.esm-activity
+    message_type: ESM_Activity
+  - name: mission.signal-report
+    message_type: SignalReport
+  - name: mission.po-activity
+    message_type: PO_Activity
+  - name: mission.observation-measurement-report
+    message_type: ObservationMeasurementReport
+  - name: mission.position-report-detailed
+    message_type: PositionReportDetailed
+  - name: mission.navigation-report
+    message_type: NavigationReport
+settle_time: 0.5
+timeout: 2.0

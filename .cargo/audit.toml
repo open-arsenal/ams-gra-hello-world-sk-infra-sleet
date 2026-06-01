@@ -1,0 +1,8 @@
+[advisories]
+# RUSTSEC-2026-0097 is introduced via tower 0.4 in the OTLP dependency chain
+# (opentelemetry-otlp/tonic) behind the optional `otlp` feature.
+# Default builds do not enable `otlp`. Track upstream OTLP stack upgrades and
+# remove this ignore once the dependency chain no longer includes rand 0.8.
+ignore = [
+  "RUSTSEC-2026-0097",
+]

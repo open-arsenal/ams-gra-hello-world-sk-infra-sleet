@@ -1,0 +1,2 @@
+doc-valid-idents = ["OMS", "UCI", "CAL", "OWP", "JSON", "WebSocket", "XSD"]
+too-many-arguments-threshold = 8

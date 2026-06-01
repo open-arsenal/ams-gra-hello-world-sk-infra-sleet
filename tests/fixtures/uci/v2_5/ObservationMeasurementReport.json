@@ -1,0 +1,38 @@
+{
+  "ObservationMeasurementReport": {
+    "SecurityInformation": {
+      "Classification": "U",
+      "OwnerProducer": [
+        {
+          "GovernmentIdentifier": "USA"
+        }
+      ]
+    },
+    "MessageHeader": {
+      "SystemID": {
+        "UUID": "550e8400-e29b-41d4-a716-446655440000"
+      },
+      "Timestamp": "2026-01-01T00:00:00Z",
+      "SchemaVersion": "002.5.0",
+      "Mode": "LIVE"
+    },
+    "MessageData": {
+      "ObservationMeasurementReportID": {
+        "UUID": "550e8400-e29b-41d4-a716-446655440000"
+      },
+      "ObservationMeasurement": [
+        {
+          "Measurements": [
+            {
+              "MeasurementID": {
+                "UUID": "550e8400-e29b-41d4-a716-446655440000"
+              },
+              "IndependentMeasurement": true,
+              "Timestamp": "2026-01-01T00:00:00Z"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

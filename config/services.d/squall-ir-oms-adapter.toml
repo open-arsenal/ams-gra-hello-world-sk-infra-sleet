@@ -1,0 +1,11 @@
+service_id = "squall-ir-oms-adapter"
+service_uuid = "71804522-3c0f-50f6-b417-fb5cdd4316ea"
+allowed_topics = ["mission.service-status", "mission.subsystem-status"]
+
+[[topic_bindings]]
+topic = "mission.service-status"
+allowed_messages = ["ServiceStatus"]
+
+[[topic_bindings]]
+topic = "mission.subsystem-status"
+allowed_messages = ["SubsystemStatus"]

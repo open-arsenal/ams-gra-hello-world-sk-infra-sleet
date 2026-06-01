@@ -1,0 +1,33 @@
+bind_addr = "0.0.0.0:9000"
+server_id = "sleet-server-1"
+system_label = "Example OMS Platform"
+
+schema_path = "/opt/sleet/spec/002.5.0/UCI_MessageDefinitions_v2_5_0.xsd"
+schema_version = "002.5.0"
+system_uuid = "123e4567-e89b-12d3-a456-426614174000"
+services_dir = "./config/services.d"
+
+# Logging format: "text" (human-readable) or "json" (structured).
+# Default: "text"
+# log_format = "json"
+
+# Tracing filter directive. Overridden by RUST_LOG when set.
+# Default: "sleet=info"
+# log_level = "sleet=debug,tokio=warn"
+
+# OpenTelemetry collector endpoint (requires build with --features otlp).
+# otlp_endpoint = "http://localhost:4317"
+
+# Graceful shutdown drain period in seconds.
+# On SIGTERM/SIGINT, Sleet stops accepting new connections, sends close frames,
+# and waits this long before forcing remaining tasks to stop.
+# Allowed: 1..=30, default: 5
+# shutdown_drain_seconds = 5
+
+# Admin listener exposing Prometheus metrics and health endpoints.
+metrics_bind_addr = "0.0.0.0:21312"
+
+# Connection idle timeout in seconds.
+# 0 disables idle probing.
+# Allowed: 0 or 10..=3600, default: 300
+# idle_timeout_seconds = 300

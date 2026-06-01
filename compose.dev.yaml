@@ -1,0 +1,37 @@
+# Dev overlay — uses builder image for local rebuild capability.
+#
+# Usage:
+#   podman-compose -f compose.yaml -f compose.dev.yaml up
+#   podman-compose -f compose.yaml -f compose.dev.yaml up --build
+#
+# Overrides the sleet service to use the builder image with source
+# mounted at /workspace, so you can rebuild inside the container without
+# building a new runtime image each time.
+
+services:
+  sleet:
+    build:
+      context: .
+      dockerfile: Containerfile
+      target: builder
+    image: registry.gitlab.com/open-arsenal/ams-gra/hello-world-sk/infra/sleet/builder:latest
+    volumes:
+      - .:/workspace:Z
+      - ./config:/opt/sleet/config:ro,Z
+      - sleet-cargo-registry:/usr/local/cargo/registry
+      - sleet-cargo-git:/usr/local/cargo/git
+      - sleet-target:/workspace/target
+    working_dir: /workspace
+    command: cargo run -p sleet -- /opt/sleet/config/server.toml
+    environment:
+      RUST_LOG: ${SLEET_LOG_LEVEL:-debug}
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sf http://localhost:21312/health || exit 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 60
+
+volumes:
+  sleet-cargo-registry:
+  sleet-cargo-git:
+  sleet-target:

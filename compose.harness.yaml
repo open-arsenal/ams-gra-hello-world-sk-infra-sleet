@@ -1,0 +1,13 @@
+services:
+  sleet:
+    command: cargo run -p sleet -- /workspace/config/harness-server.toml
+  harness:
+    image: registry.gitlab.com/open-arsenal/ams-gra/hello-world-sk/test/la-cal-harness:latest
+    depends_on:
+      sleet:
+        condition: service_healthy
+    volumes:
+      - ./config/harness.yaml:/harness/config/harness.yaml:Z
+    environment:
+      - LACAL_TARGET_URL=ws://sleet:9000
+      - LACAL_CONFIG=/harness/config/harness.yaml

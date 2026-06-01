@@ -1,0 +1,14 @@
+[
+  {
+    "variable": "SLEET_BIND_PORT",
+    "default": 21402,
+    "protocol": "tcp",
+    "description": "OWP WebSocket endpoint"
+  },
+  {
+    "variable": "SLEET_METRICS_PORT",
+    "default": 21312,
+    "protocol": "http",
+    "description": "Prometheus metrics and health endpoints"
+  }
+]

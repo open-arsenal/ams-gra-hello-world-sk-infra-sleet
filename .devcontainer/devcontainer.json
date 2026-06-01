@@ -1,0 +1,21 @@
+{
+  "name": "Sleet Devcontainer",
+  "build": {
+    "dockerfile": "../Containerfile",
+    "target": "dev",
+    "context": ".."
+  },
+  "postCreateCommand": "make fetch-spec",
+  "remoteEnv": {
+    "SLEET_SCHEMA_PATH": "${containerWorkspaceFolder}/spec/002.5.0/UCI_MessageDefinitions_v2_5_0.xsd"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "rust-lang.rust-analyzer",
+        "tamasfe.even-better-toml",
+        "vadimcn.vscode-lldb"
+      ]
+    }
+  }
+}

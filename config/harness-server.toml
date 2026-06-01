@@ -1,0 +1,10 @@
+bind_addr = "0.0.0.0:9000"
+server_id = "sleet-server-1"
+system_label = "Example OMS Platform"
+
+schema_path = "./spec/002.5.0/UCI_MessageDefinitions_v2_5_0.xsd"
+schema_version = "002.5.0"
+system_uuid = "123e4567-e89b-12d3-a456-426614174000"
+services_dir = "./config/harness-services.d"
+
+metrics_bind_addr = "0.0.0.0:21312"

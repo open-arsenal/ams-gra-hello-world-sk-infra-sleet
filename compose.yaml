@@ -1,0 +1,17 @@
+# Sleet — Default compose
+#
+# Runs the published Sleet image. Local source builds use the
+# compose.build.yaml overlay via `make compose-build-up`.
+#
+# For source-mounted development, use the dev overlay (compose.dev.yaml).
+
+services:
+  sleet:
+    image: registry.gitlab.com/open-arsenal/ams-gra/hello-world-sk/infra/sleet:latest
+    container_name: sleet
+    ports:
+      - "${SLEET_BIND_PORT:-21402}:9000"
+      - "${SLEET_METRICS_PORT:-21312}:21312"
+    command: ["/opt/sleet/config/server.toml"]
+    environment:
+      RUST_LOG: ${SLEET_LOG_LEVEL:-sleet=info}

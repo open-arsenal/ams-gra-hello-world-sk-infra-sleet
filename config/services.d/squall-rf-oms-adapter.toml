@@ -1,0 +1,11 @@
+service_id = "squall-rf-oms-adapter"
+service_uuid = "6d8b5416-646d-5885-9bda-f88fd76125eb"
+allowed_topics = ["mission.service-status", "mission.subsystem-status"]
+
+[[topic_bindings]]
+topic = "mission.service-status"
+allowed_messages = ["ServiceStatus"]
+
+[[topic_bindings]]
+topic = "mission.subsystem-status"
+allowed_messages = ["SubsystemStatus"]
