@@ -8,6 +8,8 @@
 mod admin;
 mod config;
 mod facets;
+#[cfg(test)]
+mod hex_binary_tests;
 mod router;
 mod schema;
 mod server;

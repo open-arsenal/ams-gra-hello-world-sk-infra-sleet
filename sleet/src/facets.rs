@@ -45,11 +45,11 @@ pub struct CompiledFacets {
     pub min_exclusive: Option<f64>,
     /// Upper exclusive numeric bound from `xs:maxExclusive`.
     pub max_exclusive: Option<f64>,
-    /// Minimum lexical length from `xs:minLength`.
+    /// Minimum length (octets for hexBinary) from `xs:minLength`.
     pub min_length: Option<u32>,
-    /// Maximum lexical length from `xs:maxLength`.
+    /// Maximum length (octets for hexBinary) from `xs:maxLength`.
     pub max_length: Option<u32>,
-    /// Exact lexical length from `xs:length`.
+    /// Exact length (octets for hexBinary) from `xs:length`.
     pub length: Option<u32>,
     /// Maximum total digit count from `xs:totalDigits`.
     pub total_digits: Option<u32>,
@@ -193,15 +193,28 @@ impl CompiledFacets {
     pub fn validate(
         &self,
         value: &Value,
-        _primitive: &str,
+        primitive: &str,
         path: &str,
     ) -> Result<(), FacetViolation> {
+        if primitive == "xs:hexBinary" && !value.is_string() {
+            return Err(FacetViolation {
+                facet: "hexBinary".to_owned(),
+                detail: "expected a hexadecimal string".to_owned(),
+                path: path.to_owned(),
+            });
+        }
         let Some(lexical) = lexical_value(value) else {
             return Ok(());
         };
+        // XML Schema collapse permits edge whitespace, not spaces between digits.
+        let lexical = if primitive == "xs:hexBinary" {
+            lexical.trim_matches([' ', '\t', '\r', '\n'])
+        } else {
+            &lexical
+        };
 
         if !self.enumerations.is_empty()
-            && !self.enumerations.iter().any(|allowed| allowed == &lexical)
+            && !self.enumerations.iter().any(|allowed| allowed == lexical)
         {
             return Err(FacetViolation {
                 facet: "enumeration".to_owned(),
@@ -214,7 +227,7 @@ impl CompiledFacets {
         }
 
         for pattern_set in &self.pattern_sets {
-            if !pattern_set.is_match(&lexical) {
+            if !pattern_set.is_match(lexical) {
                 let expected = pattern_set
                     .alternatives
                     .iter()
@@ -229,10 +242,24 @@ impl CompiledFacets {
             }
         }
 
-        let Ok(length) = u32::try_from(lexical.chars().count()) else {
+        let length = if primitive == "xs:hexBinary" {
+            if !lexical.len().is_multiple_of(2)
+                || !lexical.bytes().all(|byte| byte.is_ascii_hexdigit())
+            {
+                return Err(FacetViolation {
+                    facet: "hexBinary".to_owned(),
+                    detail: "expected an even number of hexadecimal digits".to_owned(),
+                    path: path.to_owned(),
+                });
+            }
+            lexical.len() / 2
+        } else {
+            lexical.chars().count()
+        };
+        let Ok(length) = u32::try_from(length) else {
             return Err(FacetViolation {
                 facet: "length".to_owned(),
-                detail: "lexical length exceeds u32".to_owned(),
+                detail: "value length exceeds u32".to_owned(),
                 path: path.to_owned(),
             });
         };
@@ -265,7 +292,7 @@ impl CompiledFacets {
         }
 
         let is_numeric_value = value.as_f64().is_some();
-        if is_numeric_value && !is_special_float_literal(&lexical) {
+        if is_numeric_value && !is_special_float_literal(lexical) {
             if let Some(number) = value.as_f64() {
                 if let Some(min) = self.min_inclusive
                     && number < min
@@ -305,7 +332,7 @@ impl CompiledFacets {
                 }
             }
 
-            if let Some((total_digits, fraction_digits)) = parse_digit_counts(&lexical) {
+            if let Some((total_digits, fraction_digits)) = parse_digit_counts(lexical) {
                 if let Some(max_total) = self.total_digits
                     && total_digits > max_total
                 {

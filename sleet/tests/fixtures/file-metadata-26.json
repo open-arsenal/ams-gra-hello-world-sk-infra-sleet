@@ -1,0 +1,50 @@
+{
+  "FileMetadata": {
+    "SecurityInformation": {
+      "Classification": "U",
+      "OwnerProducer": [
+        {
+          "GovernmentIdentifier": "USA"
+        }
+      ]
+    },
+    "MessageHeader": {
+      "SystemID": {
+        "UUID": "550e8400-e29b-41d4-a716-446655440007"
+      },
+      "Timestamp": "2026-11-08T00:00:00Z",
+      "SchemaVersion": "002.6.0",
+      "Mode": "LIVE"
+    },
+    "MessageData": {
+      "FileMetadataID": {
+        "UUID": "550e8400-e29b-41d4-a716-446655440007"
+      },
+      "FileDescription": {
+        "FileType": [
+          "OTHER"
+        ],
+        "FileFormat": {
+          "NonMIME": {
+            "Key": "A",
+            "SystemName": "A"
+          }
+        }
+      },
+      "FileName": "report.tar.bz2",
+      "FileSource": {},
+      "CreationSource": "OTHER",
+      "UntrustedModification": false,
+      "Timestamp": "2026-11-08T00:00:00Z",
+      "SecurityInformation": {
+        "Classification": "U",
+        "OwnerProducer": [
+          {
+            "GovernmentIdentifier": "USA"
+          }
+        ]
+      },
+      "SHA_2_Hash": "0000000000000000000000000000000000000000000000000000000000000000"
+    }
+  }
+}

@@ -628,7 +628,7 @@ fn validate_facets(
             .map_err(map_facet_violation);
     }
 
-    if st.restriction.facets.is_empty() {
+    if st.restriction.facets.is_empty() && primitive != "xs:hexBinary" {
         return Ok(());
     }
 
@@ -637,7 +637,7 @@ fn validate_facets(
         tracing::warn!(path = %path, warning = %warning, "inline facet compile warning");
     }
 
-    if !compiled.has_constraints() {
+    if !compiled.has_constraints() && primitive != "xs:hexBinary" {
         return Ok(());
     }
 
